@@ -1,0 +1,13 @@
+Phase three algorithm 
+
+note: keep your memeory orgainzed, start storing at 0. You can hardcore one file to read from and edit if you need to change commands a swe will  never be loading info from multi files.
+
+note: start working on phase 4
+
+note: we are using mememory locations in place or registers, make sure your proma is not rewritten by temporary variable tho
+
+note: you can assume the your program counter or pointer starts at the being of the memory and thus you can intialise it with 0
+
+note: the 8 bit array we use is split in two - 5 bits for the operan and 3 bits or the opcode!
+
+note: keep in mind the presentaion of your outcome - are you getting it from the ACC, if so what will happen in the case of branching, are you willing to permantly occupy a register to store you results?

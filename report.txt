@@ -5,95 +5,107 @@ A list of issues from previous week:
 
 A list of all issues solved over the past week
 	
-	N/a
-
-A plan for next week
 	- Get load method to work in its own method and not in main().
 	- Write the decimal_to_binary method
 	- Finish writing and fix the binary_to_decimal method.
-	- Read up on phase two
+
+A plan for next week
+	- Start working on phase two
 
 Appendix
 
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
-void load_default_memory(char array[]);
+void load_default_memory();
 void decimal_to_binary(int dec, char bin[]);
 int binary_to_decimal(char bin[]);
+int power(double exp);
+
+int array[32][8];
+
+/*calls our functions*/
+int main(){
+	char bin2[8];
+	char bin[8];
+	int i;
+
+	load_default_memory();
 
 
-/*create an array and calls our functions*/
-int main()
-{
-	int array[8][32];
-	int n;
-	int m;
-
-	/*load_default_memory(array[8][32]);*/
-	for(m = 0; m > 9; m++){
-		for(n = 0; n > 33; n++){
-			array[n][m] = rand()%2;
-		}
+	/*fill the binary array from local memory*/
+	for (i = 0; i < 8; i++)
+	{
+		bin[i] = array[5][i];
 	}
 
-	printf("finished fill!\n");
-	printf("first element is: %i\n", array[0][0]);
+	decimal_to_binary(10, bin2); /*should return 00001010*/
 
-	for(n = 0; n > 33; n = n+2){
-		for(m = 0; m > 9; m++){
-			printf("this binary number is: %i\n", array[n][m]);
-		}
-	}
+	printf("translation: %i \n", binary_to_decimal(bin));
 
-	printf("finished print!\n");
-	char bin[8] = {'0', '0', '0', '0', '0', '1', '1', '1'};
-	binary_to_decimal(bin[8]);
 	return 0;
 }
 
-/*loads some random binary numbers into the array
-
-void load_default_memory(char array[]){
+/*loads some random binary numbers into the array*/
+void load_default_memory(){
 	int n;
 	int m;
-	for(m = 0; m > 9; m++){
-		for(n = 0; n > 33; n++){
-			array[n][m] = rand()%2;
+	srand(time(NULL));
+
+	for(n = 0; n < 32; n++){
+		for(m = 0; m < 8; m++){
+			int r = rand() % 2;
+			array[n][m] = r;
 		}
 	}
 
-	printf("finished fill!\n");
-	printf("first element is: %i\n", array[0][0]);
-
-	for(n = 0; n > 33; n = n+2){
-		for(m = 0; m > 9; m++){
-			printf("this binary number is: %i\n", array[n][m]);
+	/*for(n = 0; n < 32; n++){
+		printf("this binary number is: ");
+		for(m = 0; m < 8; m++){
+			 printf("%i ", array[n][m]);
 		}
-	}
+		printf("\n");
+	}*/
+}
 
-	printf("finished print!\n");
-}*/
-
+/*translate from decimal to binary*/
 void decimal_to_binary(int dec, char bin[]){
-	printf("translation stuff\n");
+	int i;
+
+	for(i = 7; i >= 0; i--){
+			bin[i] = dec%2;
+			dec = dec/2;
+	}
+
+	printf("translation: ");
+	for(i = 0; i < 8; i++){
+		printf("%i ", bin[i]);
+	}
+	printf("\n");
 }
 
 /*translate from binary to decimal*/
 int binary_to_decimal(char bin[]){
-	printf("translation stuff again\n");
 	int m;
 	int dec = 0;
-		for (m = 0; m < 9; m++)
+		for (m = 0; m < 8; m++)
 		{
-			if(bin[m] == 0){
-				m++;
-			}
-			else{
-				dec = dec + (1 << m); /*power base 2 by shifiting*/
+			if(bin[m] != 0){
+				dec = dec + power(m);
 			}
 		}
 	return dec;
+}
+
+/*raises 2 to the power of the appropriate index*/
+int power(double exp){
+	exp = 7.0 - exp;
+	if(exp == 7){
+		return -128;
+	}
+	else{ 
+		return pow(2.0, exp);
+	}
 }

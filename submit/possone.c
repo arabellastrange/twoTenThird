@@ -72,23 +72,17 @@ void load_default_memory(){
 /*translate from decimal to binary*/
 void decimal_to_binary(int dec, char bin[]){
 	int i;
-	if(dec < -128 || dec > 127){
-		printf("Decimal out of range, please try again\n");
+
+	for(i = 7; i >= 0; i--){
+			bin[i] = dec%2;
+			dec = dec/2;
 	}
-	else{
-		if(dec < 0 ){
-			bin[0] = '1';
-		}
-		for(i = 7; i > 0; i--){
-		bin[i] = dec%2;
-		dec = dec/2;
+
+	printf("translation: ");
+	for(i = 0; i < 8; i++){
+		printf("%i ", bin[i]);
 	}
-		printf("translation: ");
-		for(i = 0; i < 8; i++){
-			printf("%i ", bin[i]);
-		}
-		printf("\n");
-	}
+	printf("\n");
 }
 
 /*translate from binary to decimal*/

@@ -1,0 +1,1028 @@
+Script started on Fri 11 Nov 2016 19:47:57 GMT
+wyb15135@cafe:~/Documents/210/twoTenThird$ whoami
+wyb15135
+wyb15135@cafe:~/Documents/210/twoTenThird$ history
+    3  ls
+    4  cat sorted_animals 
+    5  sort 
+    6  ls 
+    7  sort -r sorted_animals | uniq -c
+    8  uniq -c sorted_animals | sort -r
+    9  uinq -c sorted_animals | sort -r -o
+   10  uinq -c sorted_animals | sort -r o
+   11  uniq -c sorted_animals | sort -r -o
+   12  uniq -c sorted_animals | sort -r -o sorted_animals sorted_animals 
+   13  ls
+   14  cat sorted_animals 
+   15  uniq -c sorted_animals | sort -r sorted_animals > sorted_animals 
+   16  ls
+   17  cat sorted_animals 
+   18  cat sorted_animals 
+   19  uniq -c sorted_animals | sort -r
+   20  uniq -c animals | sort -r
+   21  uniq -c sorted_animals | sort -r animals > sorted_animals 
+   22  ls
+   23  cat sorted_animals 
+   24  uniq -c sorted_animals | sort -r
+   25  uniq -c sorted_animals | sort -r -o sorted_animals 
+   26  ls
+   27  cat sorted_animals 
+   28  ls 
+   29  cat animals_food 
+   30  more animals_food 
+   31  cd animals_food 
+   32  awk '{print $2;}'
+   33  more animals_food 
+   34  awk '{print $2;}' animals_food 
+   35  grep 'grass' animals_food 
+   36  awk ' {print $1,"eat", $2;}) ' animals_food 
+   37  awk ' {print $1,"eat", $2;} ' animals_food 
+   38  uniq -c animals_food 
+   39  awk '{print $1, sort -r $2;} animals_food
+   40  uniq -c animals_food 
+   41  man sort
+   42  sort -k2 animals_food 
+   43  sort -k2 animals_food | uniq -c
+   44  awk '{print $2;}' | sort
+   45  awk '{print $2;}' animals_food | sort
+   46  awk '{print $2;}' animals_food | sort | wc -l
+   47  wc -l | awk '{print $2;}' animals_food | sort
+   48  exit
+   49  cd Documents/
+   50  ls
+   51  cd CS104/
+   52  mkdir lab2
+   53  ls
+   54  cd lab2/
+   55  ls
+   56  cat object1 object2 object3 object4 object5 > tags
+   57  ls
+   58  uniq tags
+   59  uniq -c tags
+   60  sort tags
+   61  so tags | uniq -c
+   62  sort tags | uniq -c
+   63  sort -r tags | uniq -c
+   64  uniq -c tags | sort
+   65  sort tags > sorted_tags | uniq-c
+   66  sort tags > sorted_tags | uniq -c
+   67  ls
+   68  more sorted_tags 
+   69  awk 
+   70  'BEGIN {max = 0} {if ($
+   71  1
+   72  >max) max=$
+   73  1
+   74  } END {print max}' 
+   75  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {pint max}' sorted_tags 
+   76  ls
+   77  more sorted_tags 
+   78  uniq -c sorted_tags 
+   79  uniq -c sorted_tags > sorted_tags 
+   80  ls 
+   81  moe sorted_tags 
+   82  more sorted_tags 
+   83  sort tags | uniq -c
+   84  sort tag | uniq -c > sorted_tags
+   85  sort tags | uniq -c > sorted_tags
+   86  moe sorted_tags 
+   87  more sorted_tags 
+   88  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {pint max}' sorted_tags 
+   89  more sorted_tags 
+   90  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {print max}' sorted_tags 
+   91  awk -F '[;:]' '{$1 = $2 % $1;print $1}' sorted_tags
+   92  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {print $1 % max}' sorted_tags 
+   93  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {print $1 % max, $2}' sorted_tags
+   94  awk '{print $1 % 4, $2}' sorted_tags
+   95  awk '{print $1 / 4, $2}' sorted_tags
+   96  awk '{print $1 / 4, $2}' sorted_tags > final_tags
+   97  more final_tags 
+   98  sort final_tags 
+   99  sort -r final_tags
+  100  sort -r -o  final_tags
+  101  sort -r final_tags > fin_tags
+  102  more fin_tags 
+  103  chmod a+rx create_tags 
+  104  ./create_tags 
+  105  ls
+  106  exit
+  107  ./create_tags 
+  108  cd Documents/CS104/lab2
+  109  ls
+  110  chmod a+rx create_tags 
+  111  ./create_tags 
+  112  exit
+  113  ls
+  114  cd Documents/CS104/
+  115  ls
+  116  cd sentiment/
+  117  grep 'awful' all_neg | wc -l
+  118  grep 'awful' all_pos | wc -l
+  119  grep 'brilliant' all_pos | wc -l
+  120  grep 'brilliant' all_neg | wc -l
+  121  grep 'amazing' all_neg | wc -l
+  122  grep 'amazing' all_pos | wc -l
+  123  grep 'fresh' all_pos | wc -l
+  124  grep 'fresh' all_neg | wc -l
+  125  grep 'terrible' all_neg | wc -l
+  126  grep 'terrible' all_neg | wc -l
+  127  grep 'terrible' all_pos | wc -l
+  128  python
+  129  ls
+  130  cd Documents/
+  131  cd AR
+  132  cd AROutput/
+  133  python -m SimpleHHTPServer 8000
+  134  python -m SimpleHTTPServer 8000
+  135  exit
+  136  python
+  137  exit
+  138  ls
+  139  cd Desktop/AROutput/
+  140  python
+  141  python -m SimpleHTTPServer 8000
+  142  python -m SimpleHTTPServer 8002
+  143  exit
+  144  cd Desktop/AROutput/
+  145  python -m SimpleHTTPServer 8000
+  146  exit
+  147  cd Desktop/AROutput/
+  148  python -m SimpleHTTPServer 8000
+  149  exit
+  150  cd Documents/
+  151  ls
+  152  ls -l
+  153   cp ~ckb13101/orclab/lab1/* .
+  154  ls
+  155  sqlplus
+  156  LS
+  157  ls
+  158  cd 209
+  159  ls
+  160  sqlplus
+  161  LS
+  162  ls
+  163  sqlplu
+  164  sqlplus
+  165  sqlplus
+  166  exit
+  167  ls
+  168  gedit help
+  169  ls
+  170  cd Documents
+  171  ls
+  172  gedit myfile.txt
+  173  cp ~ckb13101/orclab/lab1/*
+  174  cd ..
+  175  ls
+  176  cp ~ckb13101/orclab/lab1/*
+  177  cp ~ckb13101/orclab/lab1/* .
+  178  sqlplus
+  179  exit
+  180  ls
+  181  cd Desktop/
+  182  ls
+  183  cd ..
+  184  ls
+  185  cd Documents/
+  186  ls
+  187  cd 201
+  188  cd 210
+  189  ls
+  190  gcc -std=c89 -o areaComp area.c 
+  191  ls
+  192  ./areaComp 
+  193  ls
+  194  gcc -std=c89 -o volumeComp volume.c
+  195  ./ volumeComp
+  196  ./volumeComp
+  197  gcc -std=c89 -o volume2Comp volume2.c
+  198  ./volume2Comp
+  199  gcc -std=c89 -o errorComp error.c
+  200  ./errorComp
+  201  ./errorComp
+  202  gcc -std=c89 -o menuComp menu.c
+  203  ls
+  204  cd Documents/210
+  205  ls
+  206  gcc -std=c89 -o menuComp menu.c
+  207  ./menuComp
+  208  v
+  209  gcc -std=c89 -o menuComp menu.c
+  210  ./menuComp
+  211  gcc -std=c89 -o menuComp menu.c
+  212  ./ menuComp
+  213  ./menuComp
+  214  ./menuComp
+  215  exit
+  216  ls
+  217  cd Desktop/
+  218  ls
+  219  cd ..
+  220  cd ..
+  221  ls
+  222  cd wyb15135
+  223  ls
+  224  cd Documents/210
+  225  ls
+  226  gcc -std=c89 -o volumeComp volume.c
+  227  ./volumeComp
+  228  exit
+  229  whoami
+  230  history
+  231  gcc -std=c89 -o area arae.c
+  232  gcc -std=c89 -o area area.c
+  233  ./area
+  234  gcc -std=c89 -o volume volume.c
+  235  ./volume
+  236  gcc -std=c89 -o volume2 volume2.c
+  237  ./volume2
+  238  gcc -std=c89 -o error error.c
+  239  ./error
+  240  ./error
+  241  gcc -std=c89 -o menu menu.c
+  242  ./menu
+  243  ./menu
+  244  gcc -std=c89 -o loop loop.c
+  245  ./loop
+  246  whoami
+  247  history
+  248  exit
+  249  cd
+  250  ls
+  251  cd Desktop
+  252  cd...
+  253  cd ..
+  254  ls
+  255  cd Documents/210/fin/
+  256  script screen.log
+  257  exit
+  258  cd Documents/
+  259  sqlplus
+  260  cp ~ckb13101/orclab/lab1/lab13.sql
+  261  cp ~ckb13101/orclab/lab1/lab13.sql .
+  262  cp ~ckb13101/orclab/lab1/* .
+  263  ls
+  264  cd 209
+  265  sqplplus
+  266  sqlplus
+  267  exit
+  268  sqlplus
+  269  git clone "https://github.com/gibtsdes/cs209.git"
+  270  ls
+  271  cd Documents
+  272  ls
+  273  cd 209/lab3
+  274  ls
+  275  sqlplus
+  276  exit
+  277  whoami
+  278  ls
+  279  cd PC
+  280  ls
+  281  cd ...
+  282  cd ..
+  283  ls
+  284  cd public
+  285  cd Public
+  286  ls
+  287  cd ..
+  288  cd Documents
+  289  ls
+  290  cd 210
+  291  ls
+  292  exit
+  293  ls
+  294  cd Documents/210/
+  295  ls
+  296  gcc -std = c89 -o grade2 grade.c
+  297  gcc -std=c89 -o grade2 grade2.c
+  298  ./grade2
+  299  ./grade2
+  300  gcc -std=c89 -o grade2 grade2.c
+  301  ./grade2
+  302  gcc -std=c89 -o grade2 grade2.c
+  303  ./grade2
+  304  gcc -std=c89 -o grade2 grade2.c
+  305  gcc -std=c89 -o grade2 grade2.c
+  306  ./grade2
+  307  gcc -std=c89 -o grade2 grade2.c
+  308  ./grade2
+  309  gcc -std=c89 -o grade2 grade2.c
+  310  ./grade2
+  311  gcc -std=c89 -o grade3 grade3.c
+  312  gcc -std=c89 -o grade3 grade3.c
+  313  ./grade2
+  314  gcc -std=c89 -o grade3 grade3.c
+  315  ./grade3
+  316  gcc -std=c89 -o grade3 grade3.c
+  317  gcc -std=c89 -o grade3 grade3.c
+  318  ./grade3
+  319  gcc -std=c89 -o grade3 grade3.c
+  320  gcc -std=c89 -o grade3 grade3.c
+  321  ./grade3
+  322  gcc -std=c89 -o grade3 grade3.c
+  323  ./grade3
+  324  gcc -std=c89 -o grade3 grade3.c
+  325  gcc -std=c89 -o grade3 grade3.c
+  326  gcc -std=c89 -o grade3 grade3.c
+  327  ./grade3
+  328  gcc -std=c89 -o grade3 grade3.c
+  329  ./grade3
+  330  gcc -std=c89 -o grade3 grade3.c
+  331  ./grade3
+  332  gcc -std=c89 -o grade3 grade3.c
+  333  ./grade3
+  334  gcc -std=c89 -o grade3 grade3.c
+  335  ./grade3
+  336  gcc -std=c89 -o grade3 grade3.c
+  337  ./grade3
+  338  gcc -std=c89 -o grade3 grade3.c
+  339  ./grade3
+  340  gcc -std=c89 -o grade3 grade3.c
+  341  .
+  342  gcc -std=c89 -o array2 array2.c
+  343  ./array2
+  344  gcc -std=c89 -o array2 array2.c
+  345  ./array2
+  346  gcc -std=c89 -o grade3 grade3.c
+  347  ./grade3
+  348  gcc -std=c89 -o reverse2 reverse2.c
+  349  reverse2
+  350  gcc -std=c89 -o reverse2 reverse2.c
+  351  gcc -std=c89 -o reverse2 reverse2.c
+  352  ./reverse2
+  353  gcc -std=c89 -o reverse2 reverse2.c
+  354  ./reverse2
+  355  gcc -std=c89 -o reverse2 reverse2.c
+  356  gcc -std=c89 -o reverse2 reverse2.c
+  357  ./reverse2
+  358  gcc -std=c89 -o reverse2 reverse2.c
+  359  gcc -std=c89 -o reverse2 reverse2.c
+  360  ./reverse2
+  361  gcc -std=c89 -o reverse2 reverse2.c
+  362  ./reverse2
+  363  gcc -std=c89 -o reverse2 reverse2.c
+  364  gcc -std=c89 -o reverse2 reverse2.c
+  365  ./reverse2
+  366  gcc -std=c89 -o reverse2 reverse2.c
+  367  ./reverse2
+  368  gcc -std=c89 -o reverse2 reverse2.c
+  369  ./reverse2
+  370  gcc -std=c89 -o reverse2 reverse2.c
+  371  ./reverse2
+  372  gcc -std=c89 -o reverse2 reverse2.c
+  373  ./reverse2
+  374  gcc -std=c89 -o reverse2 reverse2.c
+  375  ./reverse2
+  376  ./reverse2
+  377  hitrjh
+  378  ./reverse2
+  379  gcc -std=c89 -o reverse2 reverse2.c
+  380  ./reverse2
+  381  gcc -std=c89 -o reverse2 reverse2.c
+  382  ./reverse2
+  383  gcc -std=c89 -o reverse2 reverse2.c
+  384  ./reverse2
+  385  gcc -std=c89 -o reverse2 reverse2.c
+  386  gcc -std=c89 -o reverse2 reverse2.c
+  387  ./reverse2
+  388  gcc -std=c89 -o reverse2 reverse2.c
+  389  ./reverse2
+  390  gcc -std=c89 -o reverse2 reverse2.c
+  391  ./reverse2
+  392  gcc -std=c89 -o reverse2 reverse2.c
+  393  ./reverse2
+  394  exit
+  395  gcc -std=c89 -o reverse2 reverse2.c
+  396  ls
+  397  cd Documents/210/twoTenSecond-arabellastrange-StringVrs
+  398  ls
+  399  gcc -std=c89 -o reverse2 reverse2.c
+  400  gcc -std=c89 -o reverse2 reverse2.c
+  401  gcc -std=c89 -o reverse2 reverse2.c
+  402  gcc -std=c89 -o reverse2 reverse2.c
+  403  ./reverse2
+  404  gcc -std=c89 -o reverse2 reverse2.c
+  405  ./reverse2
+  406  gcc -std=c89 -o reverse2 reverse2.c
+  407  hello world?
+  408  ./reverse2
+  409  gcc -std=c89 -o reverse2 reverse2.c
+  410  ./reverse2
+  411  gcc -std=c89 -o reverse2 reverse2.c
+  412  ./reverse2
+  413  gcc -std=c89 -o reverse2 reverse2.c
+  414  ./reverse2
+  415  gcc -std=c89 -o reverse2 reverse2.c
+  416  ./reverse2
+  417  gcc -std=c89 -o reverse2 reverse2.c
+  418  ./reverse2
+  419  gcc -std=c89 -o reverse2 reverse2.c
+  420  ./reverse2
+  421  gcc -std=c89 -o reverse2 reverse2.c
+  422  gcc -std=c89 -o reverse2 reverse2.c
+  423  ./reverse2
+  424  gcc -std=c89 -o reverse2 reverse2.c
+  425  ./reverse2
+  426  gcc -std=c89 -o reverse2 reverse2.c
+  427  ./reverse2
+  428  gcc -std=c89 -o reverse2 reverse2.c
+  429  gcc -std=c89 -o reverse2 reverse2.c
+  430  gcc -std=c89 -o reverse2 reverse2.c
+  431  gcc -std=c89 -o reverse2 reverse2.c
+  432  gcc -std=c89 -o reverse2 reverse2.c
+  433  ./reverse2
+  434  gcc -std=c89 -o reverse2 reverse2.c
+  435  cd Documents/210/twoTenSecond-arabellastrange-StringVrs
+  436  ls
+  437  gcc -std=c89 -o reverse2 reverse2.c
+  438  ./reverse2
+  439  gcc -std=c89 -o reverse2 reverse2.c
+  440  ./reverse2
+  441  gcc -std=c89 -o reverse2 reverse2.c
+  442  ./reverse2
+  443  gcc -std=c89 -o reverse2 reverse2.c
+  444  ./reverse2
+  445  gcc -std=c89 -o reverse2 reverse2.c
+  446  gcc -std=c89 -o reverse2 reverse2.c
+  447  gcc -std=c89 -o reverse2 reverse2.c
+  448  gcc -std=c89 -o reverse2 reverse2.c
+  449  ./reverse2
+  450  gcc -std=c89 -o reverse2 reverse2.c
+  451  ./reverse2
+  452  gcc -std=c89 -o reverse2 reverse2.c
+  453  ./reverse2
+  454  gcc -std=c89 -o reverse2 reverse2.c
+  455  ./reverse2
+  456  gcc -std=c89 -o reverse2 reverse2.c
+  457  ./reverse2
+  458  gcc -std=c89 -o reverse2 reverse2.c
+  459  ./reverse2
+  460  gcc -std=c89 -o reverse2 reverse2.c
+  461  ./reverse2
+  462  exit
+  463  whoami
+  464  exit
+  465  whoami
+  466  history
+  467  gcc -std=c89 -o array2 array2.c
+  468  ./array2
+  469  gcc -std=c89 -o grade3 grade3.c
+  470  ./grade3
+  471  gcc -std=c89 reverse2 reverse2.c
+  472  gcc -std=c89 -o reverse2 reverse2.c
+  473  ./reverse2
+  474  ./reverse2
+  475  ./reverse2
+  476  whoami
+  477  history
+  478  exit
+  479  ls
+  480  cd Documents/
+  481  ls
+  482  cd twoTenSecond-arabellastrange-StringVrs/
+  483  ls
+  484  script screen.log
+  485  exit
+  486  cp https://github.com/gibtsdes/cs209.git
+  487  git clone https://github.com/gibtsdes/cs209.git
+  488  git clone https://github.com/gibtsdes/cs209.git
+  489  cd Documents/209/lab4
+  490  ls
+  491  sqlplus
+  492  ls
+  493  sqlplus
+  494  exit
+  495  ls
+  496  cd Documents/209/lab5
+  497  ls
+  498  SQLPLUS
+  499  sqlplus
+  500  exit
+  501  whoami
+  502  history
+wyb15135@cafe:~/Documents/210/twoTenThird$ history[1Pwhoami[2PexitsqlplusSQLPLUSls[Kcd Documents/209/lab5ls[K[K[Kgcc -std=c89 -o one posspne.c[K[K[K[K[Konce.c[K[K[K[Ke.c
+^[[1~/tmp/ccwGZ7x3.o: In function `power':
+possone.c:(.text+0x264): undefined reference to `pow'
+collect2: error: ld returned 1 exit status
+wyb15135@cafe:~/Documents/210/twoTenThird$ gcc -std=c89 -o one possone.c -lm
+wyb15135@cafe:~/Documents/210/twoTenThird$ ./one
+translation: 0 0 0 0 1 0 1 0 
+translation: -23 
+wyb15135@cafe:~/Documents/210/twoTenThird$ ./one
+translation: 0 0 0 0 1 0 1 0 
+translation: 76 
+wyb15135@cafe:~/Documents/210/twoTenThird$ ./one
+translation: 0 0 0 0 1 0 1 0 
+translation: 90 
+wyb15135@cafe:~/Documents/210/twoTenThird$ ./one
+translation: 0 0 0 0 1 0 1 0 
+translation: -20 
+wyb15135@cafe:~/Documents/210/twoTenThird$ whoami
+wyb15135
+wyb15135@cafe:~/Documents/210/twoTenThird$ history
+   11  uniq -c sorted_animals | sort -r -o
+   12  uniq -c sorted_animals | sort -r -o sorted_animals sorted_animals 
+   13  ls
+   14  cat sorted_animals 
+   15  uniq -c sorted_animals | sort -r sorted_animals > sorted_animals 
+   16  ls
+   17  cat sorted_animals 
+   18  cat sorted_animals 
+   19  uniq -c sorted_animals | sort -r
+   20  uniq -c animals | sort -r
+   21  uniq -c sorted_animals | sort -r animals > sorted_animals 
+   22  ls
+   23  cat sorted_animals 
+   24  uniq -c sorted_animals | sort -r
+   25  uniq -c sorted_animals | sort -r -o sorted_animals 
+   26  ls
+   27  cat sorted_animals 
+   28  ls 
+   29  cat animals_food 
+   30  more animals_food 
+   31  cd animals_food 
+   32  awk '{print $2;}'
+   33  more animals_food 
+   34  awk '{print $2;}' animals_food 
+   35  grep 'grass' animals_food 
+   36  awk ' {print $1,"eat", $2;}) ' animals_food 
+   37  awk ' {print $1,"eat", $2;} ' animals_food 
+   38  uniq -c animals_food 
+   39  awk '{print $1, sort -r $2;} animals_food
+   40  uniq -c animals_food 
+   41  man sort
+   42  sort -k2 animals_food 
+   43  sort -k2 animals_food | uniq -c
+   44  awk '{print $2;}' | sort
+   45  awk '{print $2;}' animals_food | sort
+   46  awk '{print $2;}' animals_food | sort | wc -l
+   47  wc -l | awk '{print $2;}' animals_food | sort
+   48  exit
+   49  cd Documents/
+   50  ls
+   51  cd CS104/
+   52  mkdir lab2
+   53  ls
+   54  cd lab2/
+   55  ls
+   56  cat object1 object2 object3 object4 object5 > tags
+   57  ls
+   58  uniq tags
+   59  uniq -c tags
+   60  sort tags
+   61  so tags | uniq -c
+   62  sort tags | uniq -c
+   63  sort -r tags | uniq -c
+   64  uniq -c tags | sort
+   65  sort tags > sorted_tags | uniq-c
+   66  sort tags > sorted_tags | uniq -c
+   67  ls
+   68  more sorted_tags 
+   69  awk 
+   70  'BEGIN {max = 0} {if ($
+   71  1
+   72  >max) max=$
+   73  1
+   74  } END {print max}' 
+   75  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {pint max}' sorted_tags 
+   76  ls
+   77  more sorted_tags 
+   78  uniq -c sorted_tags 
+   79  uniq -c sorted_tags > sorted_tags 
+   80  ls 
+   81  moe sorted_tags 
+   82  more sorted_tags 
+   83  sort tags | uniq -c
+   84  sort tag | uniq -c > sorted_tags
+   85  sort tags | uniq -c > sorted_tags
+   86  moe sorted_tags 
+   87  more sorted_tags 
+   88  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {pint max}' sorted_tags 
+   89  more sorted_tags 
+   90  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {print max}' sorted_tags 
+   91  awk -F '[;:]' '{$1 = $2 % $1;print $1}' sorted_tags
+   92  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {print $1 % max}' sorted_tags 
+   93  awk 'BEGIN {max=0} {if ($1>max) max =$1} END {print $1 % max, $2}' sorted_tags
+   94  awk '{print $1 % 4, $2}' sorted_tags
+   95  awk '{print $1 / 4, $2}' sorted_tags
+   96  awk '{print $1 / 4, $2}' sorted_tags > final_tags
+   97  more final_tags 
+   98  sort final_tags 
+   99  sort -r final_tags
+  100  sort -r -o  final_tags
+  101  sort -r final_tags > fin_tags
+  102  more fin_tags 
+  103  chmod a+rx create_tags 
+  104  ./create_tags 
+  105  ls
+  106  exit
+  107  ./create_tags 
+  108  cd Documents/CS104/lab2
+  109  ls
+  110  chmod a+rx create_tags 
+  111  ./create_tags 
+  112  exit
+  113  ls
+  114  cd Documents/CS104/
+  115  ls
+  116  cd sentiment/
+  117  grep 'awful' all_neg | wc -l
+  118  grep 'awful' all_pos | wc -l
+  119  grep 'brilliant' all_pos | wc -l
+  120  grep 'brilliant' all_neg | wc -l
+  121  grep 'amazing' all_neg | wc -l
+  122  grep 'amazing' all_pos | wc -l
+  123  grep 'fresh' all_pos | wc -l
+  124  grep 'fresh' all_neg | wc -l
+  125  grep 'terrible' all_neg | wc -l
+  126  grep 'terrible' all_neg | wc -l
+  127  grep 'terrible' all_pos | wc -l
+  128  python
+  129  ls
+  130  cd Documents/
+  131  cd AR
+  132  cd AROutput/
+  133  python -m SimpleHHTPServer 8000
+  134  python -m SimpleHTTPServer 8000
+  135  exit
+  136  python
+  137  exit
+  138  ls
+  139  cd Desktop/AROutput/
+  140  python
+  141  python -m SimpleHTTPServer 8000
+  142  python -m SimpleHTTPServer 8002
+  143  exit
+  144  cd Desktop/AROutput/
+  145  python -m SimpleHTTPServer 8000
+  146  exit
+  147  cd Desktop/AROutput/
+  148  python -m SimpleHTTPServer 8000
+  149  exit
+  150  cd Documents/
+  151  ls
+  152  ls -l
+  153   cp ~ckb13101/orclab/lab1/* .
+  154  ls
+  155  sqlplus
+  156  LS
+  157  ls
+  158  cd 209
+  159  ls
+  160  sqlplus
+  161  LS
+  162  ls
+  163  sqlplu
+  164  sqlplus
+  165  sqlplus
+  166  exit
+  167  ls
+  168  gedit help
+  169  ls
+  170  cd Documents
+  171  ls
+  172  gedit myfile.txt
+  173  cp ~ckb13101/orclab/lab1/*
+  174  cd ..
+  175  ls
+  176  cp ~ckb13101/orclab/lab1/*
+  177  cp ~ckb13101/orclab/lab1/* .
+  178  sqlplus
+  179  exit
+  180  ls
+  181  cd Desktop/
+  182  ls
+  183  cd ..
+  184  ls
+  185  cd Documents/
+  186  ls
+  187  cd 201
+  188  cd 210
+  189  ls
+  190  gcc -std=c89 -o areaComp area.c 
+  191  ls
+  192  ./areaComp 
+  193  ls
+  194  gcc -std=c89 -o volumeComp volume.c
+  195  ./ volumeComp
+  196  ./volumeComp
+  197  gcc -std=c89 -o volume2Comp volume2.c
+  198  ./volume2Comp
+  199  gcc -std=c89 -o errorComp error.c
+  200  ./errorComp
+  201  ./errorComp
+  202  gcc -std=c89 -o menuComp menu.c
+  203  ls
+  204  cd Documents/210
+  205  ls
+  206  gcc -std=c89 -o menuComp menu.c
+  207  ./menuComp
+  208  v
+  209  gcc -std=c89 -o menuComp menu.c
+  210  ./menuComp
+  211  gcc -std=c89 -o menuComp menu.c
+  212  ./ menuComp
+  213  ./menuComp
+  214  ./menuComp
+  215  exit
+  216  ls
+  217  cd Desktop/
+  218  ls
+  219  cd ..
+  220  cd ..
+  221  ls
+  222  cd wyb15135
+  223  ls
+  224  cd Documents/210
+  225  ls
+  226  gcc -std=c89 -o volumeComp volume.c
+  227  ./volumeComp
+  228  exit
+  229  whoami
+  230  history
+  231  gcc -std=c89 -o area arae.c
+  232  gcc -std=c89 -o area area.c
+  233  ./area
+  234  gcc -std=c89 -o volume volume.c
+  235  ./volume
+  236  gcc -std=c89 -o volume2 volume2.c
+  237  ./volume2
+  238  gcc -std=c89 -o error error.c
+  239  ./error
+  240  ./error
+  241  gcc -std=c89 -o menu menu.c
+  242  ./menu
+  243  ./menu
+  244  gcc -std=c89 -o loop loop.c
+  245  ./loop
+  246  whoami
+  247  history
+  248  exit
+  249  cd
+  250  ls
+  251  cd Desktop
+  252  cd...
+  253  cd ..
+  254  ls
+  255  cd Documents/210/fin/
+  256  script screen.log
+  257  exit
+  258  cd Documents/
+  259  sqlplus
+  260  cp ~ckb13101/orclab/lab1/lab13.sql
+  261  cp ~ckb13101/orclab/lab1/lab13.sql .
+  262  cp ~ckb13101/orclab/lab1/* .
+  263  ls
+  264  cd 209
+  265  sqplplus
+  266  sqlplus
+  267  exit
+  268  sqlplus
+  269  git clone "https://github.com/gibtsdes/cs209.git"
+  270  ls
+  271  cd Documents
+  272  ls
+  273  cd 209/lab3
+  274  ls
+  275  sqlplus
+  276  exit
+  277  whoami
+  278  ls
+  279  cd PC
+  280  ls
+  281  cd ...
+  282  cd ..
+  283  ls
+  284  cd public
+  285  cd Public
+  286  ls
+  287  cd ..
+  288  cd Documents
+  289  ls
+  290  cd 210
+  291  ls
+  292  exit
+  293  ls
+  294  cd Documents/210/
+  295  ls
+  296  gcc -std = c89 -o grade2 grade.c
+  297  gcc -std=c89 -o grade2 grade2.c
+  298  ./grade2
+  299  ./grade2
+  300  gcc -std=c89 -o grade2 grade2.c
+  301  ./grade2
+  302  gcc -std=c89 -o grade2 grade2.c
+  303  ./grade2
+  304  gcc -std=c89 -o grade2 grade2.c
+  305  gcc -std=c89 -o grade2 grade2.c
+  306  ./grade2
+  307  gcc -std=c89 -o grade2 grade2.c
+  308  ./grade2
+  309  gcc -std=c89 -o grade2 grade2.c
+  310  ./grade2
+  311  gcc -std=c89 -o grade3 grade3.c
+  312  gcc -std=c89 -o grade3 grade3.c
+  313  ./grade2
+  314  gcc -std=c89 -o grade3 grade3.c
+  315  ./grade3
+  316  gcc -std=c89 -o grade3 grade3.c
+  317  gcc -std=c89 -o grade3 grade3.c
+  318  ./grade3
+  319  gcc -std=c89 -o grade3 grade3.c
+  320  gcc -std=c89 -o grade3 grade3.c
+  321  ./grade3
+  322  gcc -std=c89 -o grade3 grade3.c
+  323  ./grade3
+  324  gcc -std=c89 -o grade3 grade3.c
+  325  gcc -std=c89 -o grade3 grade3.c
+  326  gcc -std=c89 -o grade3 grade3.c
+  327  ./grade3
+  328  gcc -std=c89 -o grade3 grade3.c
+  329  ./grade3
+  330  gcc -std=c89 -o grade3 grade3.c
+  331  ./grade3
+  332  gcc -std=c89 -o grade3 grade3.c
+  333  ./grade3
+  334  gcc -std=c89 -o grade3 grade3.c
+  335  ./grade3
+  336  gcc -std=c89 -o grade3 grade3.c
+  337  ./grade3
+  338  gcc -std=c89 -o grade3 grade3.c
+  339  ./grade3
+  340  gcc -std=c89 -o grade3 grade3.c
+  341  .
+  342  gcc -std=c89 -o array2 array2.c
+  343  ./array2
+  344  gcc -std=c89 -o array2 array2.c
+  345  ./array2
+  346  gcc -std=c89 -o grade3 grade3.c
+  347  ./grade3
+  348  gcc -std=c89 -o reverse2 reverse2.c
+  349  reverse2
+  350  gcc -std=c89 -o reverse2 reverse2.c
+  351  gcc -std=c89 -o reverse2 reverse2.c
+  352  ./reverse2
+  353  gcc -std=c89 -o reverse2 reverse2.c
+  354  ./reverse2
+  355  gcc -std=c89 -o reverse2 reverse2.c
+  356  gcc -std=c89 -o reverse2 reverse2.c
+  357  ./reverse2
+  358  gcc -std=c89 -o reverse2 reverse2.c
+  359  gcc -std=c89 -o reverse2 reverse2.c
+  360  ./reverse2
+  361  gcc -std=c89 -o reverse2 reverse2.c
+  362  ./reverse2
+  363  gcc -std=c89 -o reverse2 reverse2.c
+  364  gcc -std=c89 -o reverse2 reverse2.c
+  365  ./reverse2
+  366  gcc -std=c89 -o reverse2 reverse2.c
+  367  ./reverse2
+  368  gcc -std=c89 -o reverse2 reverse2.c
+  369  ./reverse2
+  370  gcc -std=c89 -o reverse2 reverse2.c
+  371  ./reverse2
+  372  gcc -std=c89 -o reverse2 reverse2.c
+  373  ./reverse2
+  374  gcc -std=c89 -o reverse2 reverse2.c
+  375  ./reverse2
+  376  ./reverse2
+  377  hitrjh
+  378  ./reverse2
+  379  gcc -std=c89 -o reverse2 reverse2.c
+  380  ./reverse2
+  381  gcc -std=c89 -o reverse2 reverse2.c
+  382  ./reverse2
+  383  gcc -std=c89 -o reverse2 reverse2.c
+  384  ./reverse2
+  385  gcc -std=c89 -o reverse2 reverse2.c
+  386  gcc -std=c89 -o reverse2 reverse2.c
+  387  ./reverse2
+  388  gcc -std=c89 -o reverse2 reverse2.c
+  389  ./reverse2
+  390  gcc -std=c89 -o reverse2 reverse2.c
+  391  ./reverse2
+  392  gcc -std=c89 -o reverse2 reverse2.c
+  393  ./reverse2
+  394  exit
+  395  gcc -std=c89 -o reverse2 reverse2.c
+  396  ls
+  397  cd Documents/210/twoTenSecond-arabellastrange-StringVrs
+  398  ls
+  399  gcc -std=c89 -o reverse2 reverse2.c
+  400  gcc -std=c89 -o reverse2 reverse2.c
+  401  gcc -std=c89 -o reverse2 reverse2.c
+  402  gcc -std=c89 -o reverse2 reverse2.c
+  403  ./reverse2
+  404  gcc -std=c89 -o reverse2 reverse2.c
+  405  ./reverse2
+  406  gcc -std=c89 -o reverse2 reverse2.c
+  407  hello world?
+  408  ./reverse2
+  409  gcc -std=c89 -o reverse2 reverse2.c
+  410  ./reverse2
+  411  gcc -std=c89 -o reverse2 reverse2.c
+  412  ./reverse2
+  413  gcc -std=c89 -o reverse2 reverse2.c
+  414  ./reverse2
+  415  gcc -std=c89 -o reverse2 reverse2.c
+  416  ./reverse2
+  417  gcc -std=c89 -o reverse2 reverse2.c
+  418  ./reverse2
+  419  gcc -std=c89 -o reverse2 reverse2.c
+  420  ./reverse2
+  421  gcc -std=c89 -o reverse2 reverse2.c
+  422  gcc -std=c89 -o reverse2 reverse2.c
+  423  ./reverse2
+  424  gcc -std=c89 -o reverse2 reverse2.c
+  425  ./reverse2
+  426  gcc -std=c89 -o reverse2 reverse2.c
+  427  ./reverse2
+  428  gcc -std=c89 -o reverse2 reverse2.c
+  429  gcc -std=c89 -o reverse2 reverse2.c
+  430  gcc -std=c89 -o reverse2 reverse2.c
+  431  gcc -std=c89 -o reverse2 reverse2.c
+  432  gcc -std=c89 -o reverse2 reverse2.c
+  433  ./reverse2
+  434  gcc -std=c89 -o reverse2 reverse2.c
+  435  cd Documents/210/twoTenSecond-arabellastrange-StringVrs
+  436  ls
+  437  gcc -std=c89 -o reverse2 reverse2.c
+  438  ./reverse2
+  439  gcc -std=c89 -o reverse2 reverse2.c
+  440  ./reverse2
+  441  gcc -std=c89 -o reverse2 reverse2.c
+  442  ./reverse2
+  443  gcc -std=c89 -o reverse2 reverse2.c
+  444  ./reverse2
+  445  gcc -std=c89 -o reverse2 reverse2.c
+  446  gcc -std=c89 -o reverse2 reverse2.c
+  447  gcc -std=c89 -o reverse2 reverse2.c
+  448  gcc -std=c89 -o reverse2 reverse2.c
+  449  ./reverse2
+  450  gcc -std=c89 -o reverse2 reverse2.c
+  451  ./reverse2
+  452  gcc -std=c89 -o reverse2 reverse2.c
+  453  ./reverse2
+  454  gcc -std=c89 -o reverse2 reverse2.c
+  455  ./reverse2
+  456  gcc -std=c89 -o reverse2 reverse2.c
+  457  ./reverse2
+  458  gcc -std=c89 -o reverse2 reverse2.c
+  459  ./reverse2
+  460  gcc -std=c89 -o reverse2 reverse2.c
+  461  ./reverse2
+  462  exit
+  463  whoami
+  464  exit
+  465  whoami
+  466  history
+  467  gcc -std=c89 -o array2 array2.c
+  468  ./array2
+  469  gcc -std=c89 -o grade3 grade3.c
+  470  ./grade3
+  471  gcc -std=c89 reverse2 reverse2.c
+  472  gcc -std=c89 -o reverse2 reverse2.c
+  473  ./reverse2
+  474  ./reverse2
+  475  ./reverse2
+  476  whoami
+  477  history
+  478  exit
+  479  ls
+  480  cd Documents/
+  481  ls
+  482  cd twoTenSecond-arabellastrange-StringVrs/
+  483  ls
+  484  script screen.log
+  485  exit
+  486  cp https://github.com/gibtsdes/cs209.git
+  487  git clone https://github.com/gibtsdes/cs209.git
+  488  git clone https://github.com/gibtsdes/cs209.git
+  489  cd Documents/209/lab4
+  490  ls
+  491  sqlplus
+  492  ls
+  493  sqlplus
+  494  exit
+  495  ls
+  496  cd Documents/209/lab5
+  497  ls
+  498  SQLPLUS
+  499  sqlplus
+  500  exit
+  501  whoami
+  502  history
+  503  gcc -std=c89 -o one possone.c
+  504  gcc -std=c89 -o one possone.c -lm
+  505  ./one
+  506  ./one
+  507  ./one
+  508  ./one
+  509  whoami
+  510  history
+wyb15135@cafe:~/Documents/210/twoTenThird$ exit
+exit
+
+Script done on Fri 11 Nov 2016 19:50:26 GMT

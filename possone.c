@@ -76,13 +76,19 @@ void decimal_to_binary(int dec, char bin[]){
 		printf("Decimal out of range, please try again\n");
 	}
 	else{
+
 		if(dec < 0 ){
-			bin[0] = '1';
+			bin[0] = 1;
 		}
+		else{
+			bin[0] = 0;
+		}
+
 		for(i = 7; i > 0; i--){
-		bin[i] = dec%2;
-		dec = dec/2;
-	}
+			bin[i] = dec%2;
+			dec = dec/2;
+		}
+
 		printf("translation: ");
 		for(i = 0; i < 8; i++){
 			printf("%i ", bin[i]);

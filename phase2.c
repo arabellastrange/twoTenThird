@@ -9,6 +9,7 @@ void convert_to_assembly(int array[32][8]);
 void decimal_to_binary(int dec, char bin[]);
 int binary_to_decimal(char bin[]);
 int power(double exp);
+int conc(int m);
 
 int array[32][8];
 
@@ -68,43 +69,37 @@ void convert_to_assembly(int array[32][8]){
 	int n;
 	int m = 0;
 	for(n = 0; n < 32; n++){
+		int instruct;
 		printf("the instruction at this row is: ");
-			/*starts with 0*/
-			if(array[n][m] == 0){
-				if(array[n][m + 1] == 0){
-					if(array[n][m + 2] == 0){
-						printf("Halt execution of the program.\n");
-					}
-					else /*causing issue*/{
-						printf("Load a copy of the value in the referenced memory location in the accumulator. \n");
-					}
-				}
-					if(array[n][m + 2] == 0){
-						printf("Load the constant value of the operand in the accumulator.\n");
-					}
-					else{
-						printf("Store a copy of the contents of the accumulator in the referenced memory location.\n");
-					}
+
+		for (m = 0; m < 4; m++)
+			{
+				instruct = conc(array[n][m]);
+				printf("%i", instruct);
+				printf("\n");
 			}
-			/*strts with one*/
-			if(array[n][m] == 1){
-				if (array[n][m + 1] == 0) {
-					if(array[n][m + 2] == 0){
-						printf("Add the value in the referenced memory location to the value in the accumulator; store result in the accumulator. \n");
-					}
-					else /*causing issue*/{
-						printf("Subtract the value in the referenced memory location from the value in the accumulator; store result in the accumulator\n");
-					}
-				}
-					if(array[n][m + 2] == 0){
-						printf("Jump to the referenced memory location if the value of the accumulator is a positive number (equal or greater than 0). \n");
-					}
-					else{
-						printf("Jump to the referenced memory location if the value of the accumulator is 0 \n");
-					}
-			}
+			
+		switch(instruct){
+			case 000: printf("Halt execution of the program.\n"); 
+					  break;
+			case 001: printf("Load a copy of the value in the referenced memory location. \n");
+					  break;
+			case 010: printf("Load the constant value of the operand in the accumulator.\n"); 
+					  break;
+			case 011: printf("Store a copy of the contents of the accumulator.\n");
+					  break;
+			case 100: printf("Add the value in the referenced memory location to the value in the accumulator.\n");
+					  break;
+			case 101: printf("Subtract the value in the referenced memory location from the value in the accumulator.\n");
+					  break;
+			case 110: printf("Jump to the referenced memory location if the value of the accumulator is a positive number.\n");
+					  break;
+			case 111: printf("Jump to the referenced memory location if the value of the accumulator is 0.\n");
+					  break;
+		}			
 	}
 }
+
 
 /*translate from decimal to binary*/
 void decimal_to_binary(int dec, char bin[]){
@@ -144,4 +139,16 @@ int power(double exp){
 	else{
 		return pow(2.0, exp);
 	}
+}
+
+/*concatenate the first three digits from the bin number for comparision*/
+int conc(int m){
+	int prev = m;
+	unsigned pow = 10;
+
+    while(m >= pow){
+        pow *= 10;
+    }
+
+    return m * pow + prev;  
 }

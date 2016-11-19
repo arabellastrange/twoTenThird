@@ -3,18 +3,14 @@ void convert_to_assembly(int array[32][8]){
 	int m = 0;
 	for(n = 0; n < 32; n++){
 		int instruct;
-		char x;
 		printf("the instruction at this row is: ");
 
-		for (int m = 0; m < 4; m++)
+		for (m = 0; m < 4; m++)
 			{
 				/* code */
-				sprintf(array[n][m], "%d", y);
-				x = strcat(x,y);
-				instruct = atoi(x);
 			}
 
-		swtich(instruct){
+		switch(instruct){
 			case 000: printf("Halt execution of the program.\n"); 
 					  break;
 			case 001: printf("Load a copy of the value in the referenced memory location. \n");

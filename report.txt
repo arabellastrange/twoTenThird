@@ -5,12 +5,11 @@ A list of issues from previous week:
 
 A list of all issues solved over the past week
 	
-	- Get load method to work in its own method and not in main().
-	- Write the decimal_to_binary method
-	- Finish writing and fix the binary_to_decimal method.
+	- Added a sign bit to the decimal to binary function
 
 A plan for next week
-	- Start working on phase two
+	- Finish phase two
+	- Start phase three
 
 Appendix
 
@@ -20,9 +19,12 @@ Appendix
 #include <time.h>
 
 void load_default_memory();
+void display_memory(int array[32][8]);
+void convert_to_assembly(int array[32][8]);
 void decimal_to_binary(int dec, char bin[]);
 int binary_to_decimal(char bin[]);
 int power(double exp);
+int conc(int m);
 
 int array[32][8];
 
@@ -33,7 +35,7 @@ int main(){
 	int i;
 
 	load_default_memory();
-
+	display_memory(array);
 
 	/*fill the binary array from local memory*/
 	for (i = 0; i < 8; i++)
@@ -44,6 +46,8 @@ int main(){
 	decimal_to_binary(10, bin2); /*should return 00001010*/
 
 	printf("translation: %i \n", binary_to_decimal(bin));
+
+	convert_to_assembly(array);
 
 	return 0;
 }
@@ -60,15 +64,57 @@ void load_default_memory(){
 			array[n][m] = r;
 		}
 	}
+}
 
-	/*for(n = 0; n < 32; n++){
-		printf("this binary number is: ");
+/* Displays the memory contents & respective locations*/
+void display_memory(int array[32][8]) {
+	int n;
+	int m;
+	for(n = 0; n < 32; n++){
+		printf("this binary number at row %i is: ", n);
 		for(m = 0; m < 8; m++){
 			 printf("%i ", array[n][m]);
 		}
 		printf("\n");
-	}*/
+	}
 }
+
+/* Converts the memory contents to assembly language and displays the results on the screen */
+void convert_to_assembly(int array[32][8]){
+	int n;
+	int m = 0;
+	for(n = 0; n < 32; n++){
+		int instruct;
+		printf("the instruction at this row is: ");
+
+		for (m = 0; m < 4; m++)
+			{
+				instruct = conc(array[n][m]);
+				printf("%i", instruct);
+				printf("\n");
+			}
+
+		switch(instruct){
+			case 000: printf("Halt execution of the program.\n"); 
+					  break;
+			case 001: printf("Load a copy of the value in the referenced memory location. \n");
+					  break;
+			case 010: printf("Load the constant value of the operand in the accumulator.\n"); 
+					  break;
+			case 011: printf("Store a copy of the contents of the accumulator.\n");
+					  break;
+			case 100: printf("Add the value in the referenced memory location to the value in the accumulator.\n");
+					  break;
+			case 101: printf("Subtract the value in the referenced memory location from the value in the accumulator.\n");
+					  break;
+			case 110: printf("Jump to the referenced memory location if the value of the accumulator is a positive number.\n");
+					  break;
+			case 111: printf("Jump to the referenced memory location if the value of the accumulator is 0.\n");
+					  break;
+		}			
+	}
+}
+
 
 /*translate from decimal to binary*/
 void decimal_to_binary(int dec, char bin[]){
@@ -105,7 +151,22 @@ int power(double exp){
 	if(exp == 7){
 		return -128;
 	}
-	else{ 
+	else{
 		return pow(2.0, exp);
 	}
+}
+
+/*concatenate the first three digits from the bin number for comparision*/
+int conc(int m){
+	int prev = 0;
+	unsigned pow = 10;
+
+    if(m >= pow){
+        pow = pow * 10;
+    }
+    
+    res = (m * pow) + prev; 
+    prev = m;
+    return res;
+
 }

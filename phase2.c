@@ -78,7 +78,7 @@ void convert_to_assembly(int array[32][8]){
 				printf("%i", instruct);
 				printf("\n");
 			}
-			
+
 		switch(instruct){
 			case 000: printf("Halt execution of the program.\n"); 
 					  break;
@@ -143,12 +143,15 @@ int power(double exp){
 
 /*concatenate the first three digits from the bin number for comparision*/
 int conc(int m){
-	int prev = m;
+	int prev = 0;
 	unsigned pow = 10;
 
-    while(m >= pow){
-        pow *= 10;
+    if(m >= pow){
+        pow = pow * 10;
     }
+    
+    res = (m * pow) + prev; 
+    prev = m;
+    return res;
 
-    return m * pow + prev;  
 }

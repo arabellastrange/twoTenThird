@@ -73,11 +73,14 @@ void display_memory(int array[32][8]) {
 void read_from_console(int array[32][8]){
 	int n;
 	int m;
+	char input[9];
+	
 	for(n = 0; n < 32; n++){
 		printf("Enter the binary string you would like to add: ");
-	
+		scanf("%s", input);
+
 		for(m = 0; m < 8; m++){
-				scanf("%1i", array[n][m]); /*read one character  how to scan next though?*/
+				array[n][m] = input[m];
 		}
 	}
 	display_memory(array);

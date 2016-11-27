@@ -87,6 +87,8 @@ void read_from_console(int array[32][8]){
 
 /*loads values into a global 32x8 array based on an input file*/
 void load_from_file(){
+	int n;
+	int m;
 	FILE *file_pointer;
 	file_pointer = fopen(INPUT_FILE, "r");
 
@@ -98,13 +100,17 @@ void load_from_file(){
 	}
 	else{
 		while(fgets(line, sizeof(line), file_pointer)){
-			printf("%s\n", line);
-			int n;
-			int m;
+			printf("%s", line);
 			for(n = 0; n < 32; n++){
 				for (m = 0; m < 8; m++)
 				{
-					array[n][m] = line[m];
+					/*array[n][m] = line[m];*/
+					if(line[m] == 48){
+						array[n][m] = 0;
+					}
+					else{
+						array[n][m] = 1;
+					}
 				}
 			}
 		}

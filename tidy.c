@@ -2,40 +2,61 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
+#include <string.h>
+
+#define INPUT_FILE "data"
 
 void load_default_memory();
-void display_memory(int array[32][8]);
+void load_from_file();
 void read_from_console(int array[32][8]); 
+void display_memory(int array[32][8]);
+
 void convert_to_assembly(int array[32][8]);
 void decimal_to_binary(int dec, int bin[]);
 int binary_to_decimal(int bin[]);
 int power(double exp);
 int conc(int m);
 
+void halt();
+void load(int *operand);
+void loadC(int operand);
+void store(int *operand);
+void add(int *operand);
+void sub(int *operand);
+void jump(int *operand);
+void jumpZ(int *operand);
+
 int array[32][8];
+int ACC;
+int IP;
 int instruct;
 
-/*calls our functions*/
-int main(){
-	int bin2[8];
-	int bin[8];
-	int i;
-
-	load_default_memory();
-
-	for (i = 0; i < 8; i++)
-	{
-		bin[i] = array[5][i];
+/*calls appropiate data inout method based on argument form user*/
+int main(int argc, char * argv[]){
+	if (argc == 2){
+		if (!strcmp(argv[1],"-d")){
+			printf("will load default memory\n");
+			load_default_memory();
+		}
+		else if(!strcmp(argv[1],"-c")){
+			printf("will read from console \n");
+			read_from_console(array);
+		}
+		else if(!strcmp(argv[1],"-f")){
+			printf("will read from file \n");
+			load_from_file();
+		}
+		else{
+			printf("Invalid argument, program terminated\n");
+		}
 	}
-
-	decimal_to_binary(10, bin2);
-
-	printf("translation: %i \n", binary_to_decimal(bin));
-
+	else {
+		printf("Missing or too many arguments, program terminated \n");
+	}
 	return 1;
 }
 
-/*loads some random binary numbers into the array*/
+/*loads random 1s and 0s into a global 32x8 array*/
 void load_default_memory(){
 	int n;
 	int m;
@@ -47,23 +68,10 @@ void load_default_memory(){
 			array[n][m] = r;
 		}
 	}
+	display_memory(array);
 }
 
-/* Displays the memory contents & respective locations*/
-void display_memory(int array[32][8]) {
-	int n;
-	int m;
-	for(n = 0; n < 32; n++){
-		printf("this binary number at row %i is: ", n);
-		for(m = 0; m < 8; m++){
-			 printf("%i ", array[n][m]);
-		}
-		printf("\n");
-	}
-}
-
-/* Prompts the user to input the memory contents from the console (i.e. command line), reads the
-/* input in and stores it into the memory */
+/*loads values into a global 32x8 array based on user input*/
 void read_from_console(int array[32][8]){
 	int n;
 	int m;
@@ -75,6 +83,48 @@ void read_from_console(int array[32][8]){
 		}
 	}
 	display_memory(array);
+}
+
+/*loads values into a global 32x8 array based on an input file*/
+void load_from_file(){
+	FILE *file_pointer;
+	file_pointer = fopen(INPUT_FILE, "r");
+
+	char line[9];
+
+	if(file_pointer == NULL){
+		printf("Failed to open file \n");
+		exit(EXIT_FAILURE);
+	}
+	else{
+		while(fgets(line, sizeof(line), file_pointer)){
+			printf("%s\n", line);
+			int n;
+			int m;
+			for(n = 0; n < 32; n++){
+				for (m = 0; m < 8; m++)
+				{
+					array[n][m] = line[m];
+				}
+			}
+		}
+	}
+
+	fclose(file_pointer);
+	display_memory(array);
+}
+
+/*prints the contents of memory to screen*/
+void display_memory(int array[32][8]) {
+	int n;
+	int m;
+	for(n = 0; n < 32; n++){
+		printf("this binary number at row %i is: ", n);
+		for(m = 0; m < 8; m++){
+			 printf("%i ", array[n][m]);
+		}
+		printf("\n");
+	}
 }
 
 /* Converts the memory contents to assembly language and displays the results on the screen */
@@ -114,7 +164,6 @@ void convert_to_assembly(int array[32][8]){
 	}
 }
 
-
 /*translate from decimal to binary*/
 void decimal_to_binary(int dec, int bin[]){
 	int i;
@@ -144,7 +193,7 @@ int binary_to_decimal(int bin[]){
 	return dec;
 }
 
-/*raises 2 to the power of the appropriate index*/
+/*raises 2 to the power of the appropriate index for dicmal translation*/
 int power(double exp){
 	exp = 7.0 - exp;
 	if(exp == 7){
@@ -158,4 +207,47 @@ int power(double exp){
 /*concatenate the first three digits from the bin number for comparision*/
 int conc(int m){
     return (instruct << 1) | m;
+}
+
+/*actual computer functions*/
+void halt(){
+	printf("Goodbye! \n");
+	IP++;
+}
+
+void load(int *operand){
+	ACC = *operand;
+	IP++;	
+}
+
+void loadC(int operand){
+	ACC = operand;
+	IP++;
+}
+
+void store(int *operand){
+	*operand = ACC;
+	IP++;
+}
+
+void add(int *operand){
+	ACC = ACC + *operand;
+	IP++;
+}
+
+void sub(int *operand){
+	ACC = ACC - *operand;
+	IP++;
+}
+
+void jump(int *operand){
+	if(ACC > 0){
+		IP = binary_to_decimal(operand);
+	}
+}
+
+void jumpZ(int *operand){
+	if(ACC == 0){
+		IP = binary_to_decimal(operand);
+	}
 }

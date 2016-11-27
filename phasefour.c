@@ -1,6 +1,7 @@
 /* Loads the instructions from a file and stores its contents into the memory */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define INPUT_FILE "data"
 
@@ -8,8 +9,25 @@ void load_from_file();
 
 int array[32][8];
 
-int main(){
- 	load_from_file();
+int main(int argc, char * argv[]){
+	if(argc < 1){
+		printf("Missing arguments, programme terminated \n");
+	}
+	if(!strcmp(argv[1], -d)){
+		printf("will load default memory\n");
+		load_default_memory();
+	}
+	if(!strcmp(argv[1], -c )){
+		printf("will read from console \n");
+		read_from_console(array);
+	}
+	if(!strcmp(argv[1], -f)){
+		printf("will read from file \n");
+		load_from_file();
+	}
+	else{
+		printf("Invalid argument, programme terminated\n");
+	}
 	return 1;
 }
 

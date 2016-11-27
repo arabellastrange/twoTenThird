@@ -13,6 +13,7 @@ int power(double exp);
 int conc(int m);
 
 int array[32][8];
+int instruct;
 
 /*calls our functions*/
 int main(){
@@ -22,23 +23,21 @@ int main(){
 
 	load_default_memory();
 
-	/*fill the binary array from local memory*/
+	/*fill the binary array from local memory
 	for (i = 0; i < 8; i++)
 	{
 		bin[i] = array[5][i];
 	}
 
-	decimal_to_binary(10, bin2); /*should return 00001010*/
+	decimal_to_binary(10, bin2);
 
-	printf("translation: %i \n", binary_to_decimal(bin));
-
-	display_memory(array);
+	printf("translation: %i \n", binary_to_decimal(bin));*/
 
 	read_from_console(array);
 
-	/*convert_to_assembly(array);*/
+	convert_to_assembly(array);
 
-	return 0;
+	return 1;
 }
 
 /*loads some random binary numbers into the array*/
@@ -77,7 +76,7 @@ void read_from_console(int array[32][8]){
 		printf("Enter the binary string you would like to add: ");
 	
 		for(m = 0; m < 8; m++){
-				scanf("%1i", array[n][m]); /*read one character  how to scan next though?*/
+				scanf("%1i", &array[n][m]); /*read one character*/
 		}
 	}
 	display_memory(array);
@@ -88,15 +87,14 @@ void convert_to_assembly(int array[32][8]){
 	int n;
 	int m = 0;
 	for(n = 0; n < 32; n++){
-		int instruct;
 		printf("the instruction at this row is: ");
 
-		for (m = 0; m < 4; m++)
-			{
-				instruct = conc(array[n][m]);
-				printf("%i", instruct);
-				printf("\n");
-			}
+		for (m = 0; m < 3; m++){
+			instruct = conc(array[n][m]);
+			printf("%i", instruct);
+		}
+
+		printf("\n");
 
 		switch(instruct){
 			case 000: printf("Halt execution of the program.\n"); 
@@ -115,7 +113,9 @@ void convert_to_assembly(int array[32][8]){
 					  break;
 			case 111: printf("Jump to the referenced memory location if the value of the accumulator is 0.\n");
 					  break;
-		}			
+		}
+
+		instruct = '\0';			
 	}
 }
 
@@ -162,15 +162,5 @@ int power(double exp){
 
 /*concatenate the first three digits from the bin number for comparision*/
 int conc(int m){
-	int prev = 0;
-	unsigned pow = 10;
-
-    if(m >= pow){
-        pow = pow * 10;
-    }
-    
-    int res = (m * pow) + prev; 
-    prev = m;
-    return res;
-
+    return (instruct << 1) | m;
 }

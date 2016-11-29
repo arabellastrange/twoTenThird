@@ -15,7 +15,6 @@ void convert_to_assembly(int array[32][8]);
 void decimal_to_binary(int dec, int bin[]);
 int binary_to_decimal(int bin[]);
 int power(double exp);
-int conc(int m);
 
 void halt();
 void load(int operand[5]);
@@ -69,6 +68,7 @@ void load_default_memory(){
 		}
 	}
 	display_memory(array);
+	convert_to_assembly(array);
 }
 
 /*loads values into a global 32x8 array based on user input*/
@@ -140,11 +140,10 @@ void convert_to_assembly(int array[32][8]){
 	int o[5];
 	for(n = 0; n < 32; n++){
 		printf("the instruction at this row is: ");
+		/*FIX HERE*/
+		instruct = array[n][m] >> 5;
+		printf("%i", instruct);
 
-		for (m = 0; m < 3; m++){
-			instruct = conc(array[n][m]);
-			printf("%i", instruct);
-		}
 		/*read the op of this instruction store it*/
 		for(m = 3; m < 8; m++){
 			o[m] = array[n][m];
@@ -153,16 +152,16 @@ void convert_to_assembly(int array[32][8]){
 
 		switch(instruct){
 			case 000: printf("Halt execution of the program.\n");
-								halt();
+								/*halt();*/
 					  		break;
 			case 001: printf("Load a copy of the value in the referenced memory location. \n");
-								load(o);
+								/*load(o);*/
 					  		break;
 			case 010: printf("Load the constant value of the operand in the accumulator.\n");
-								loadC(o)
+								/*loadC(o);*/
 					  		break;
 			case 011: printf("Store a copy of the contents of the accumulator.\n");
-								load(o);
+								/*load(o);*/
 					  		break;
 			case 100: printf("Add the value in the referenced memory location to the value in the accumulator.\n");
 								add(o);
@@ -221,11 +220,6 @@ int power(double exp){
 	}
 }
 
-/*concatenate the first three digits from the bin number for comparision*/
-int conc(int m){
-    return (instruct << 1) | m;
-}
-
 /*actual computer functions*/
 void halt(){
 	printf("Goodbye! \n");
@@ -241,19 +235,22 @@ void load(int operand[5]){
 		constant[m] = array[IP][m];
 	}
 	ACC = binary_to_decimal(constant);
+	printf("Loaded: %i\n", ACC);
 	IP = current;
 	IP++;
 }
 
 void loadC(int operand[5]){
 	ACC = binary_to_decimal(operand);
+	printf("Loaded: %i\n", ACC);
 	IP++;
 }
 
 void store(int operand[5]){
 	int m;
-	int val = decimal_to_binary(ACC);
-	int current = IP
+	int val[8];
+	decimal_to_binary(ACC, val);
+	int current = IP;
 	IP = binary_to_decimal(operand);
 	for(m = 0; m < 8; m++){
 		array[IP][m] = val[m];
@@ -262,25 +259,33 @@ void store(int operand[5]){
 	IP++;
 }
 
-void add(int *operand){
-	ACC = ACC + *operand;
+void add(int operand[5]){
+	int current = IP;
+	int constant[5];
+	int m;
+	IP = binary_to_decimal(operand);
+	for(m = 0; m < 8; m ++){
+		constant[m] = array[IP][m];
+	}
+	ACC = ACC + binary_to_decimal(constant);
+	printf("Result: %i \n", ACC);
+	IP = current;
+	IP++;
+}
+
+void sub(int operand[5]){
+	ACC = ACC - binary_to_decimal(operand);
 	printf("Result: %i \n", ACC);
 	IP++;
 }
 
-void sub(int *operand){
-	ACC = ACC - *operand;
-	printf("Result: %i \n", ACC);
-	IP++;
-}
-
-void jump(int *operand){
+void jump(int operand[5]){
 	if(ACC > 0){
 		IP = binary_to_decimal(operand);
 	}
 }
 
-void jumpZ(int *operand){
+void jumpZ(int operand[5]){
 	if(ACC == 0){
 		IP = binary_to_decimal(operand);
 	}

@@ -15,6 +15,7 @@ void convert_to_assembly(int array[32][8]);
 void decimal_to_binary(int dec, int bin[]);
 int binary_to_decimal(int bin[]);
 int power(double exp);
+void run();
 
 void halt();
 void load(int operand[5]);
@@ -28,7 +29,7 @@ void jumpZ(int operand[5]);
 int array[32][8];
 int ACC;
 int IP;
-int instruct;
+int instruct = 0;
 
 /*calls appropiate data inout method based on argument form user*/
 int main(int argc, char * argv[]){
@@ -68,21 +69,33 @@ void load_default_memory(){
 		}
 	}
 	display_memory(array);
-	convert_to_assembly(array);
+	run();
 }
 
 /*loads values into a global 32x8 array based on user input*/
 void read_from_console(int array[32][8]){
-	int n;
+	int n = 0;
 	int m;
-	for(n = 0; n < 32; n++){
+	char option;
+
+	printf("Enter 'I' to add a new instruction or 'Q' to exit and run program: ");
+	scanf("%c", &option);
+
+	while(option != 81){
 		printf("Enter the binary string you would like to add: ");
 
 		for(m = 0; m < 8; m++){
 				scanf("%1i", &array[n][m]); /*read one character*/
 		}
+
+		n++;
+
+		printf("Your command: ");
+		scanf(" %c", &option);
 	}
+
 	display_memory(array);
+	run();
 }
 
 /*loads values into a global 32x8 array based on an input file*/
@@ -101,23 +114,25 @@ void load_from_file(){
 	else{
 		while(fgets(line, sizeof(line), file_pointer)){
 			printf("%s", line);
+			printf("\n");
 			for(n = 0; n < 32; n++){
 				for (m = 0; m < 8; m++)
 				{
-					/*array[n][m] = line[m];*/
-					if(line[m] == 48){
+					if(line[n + m] == 48){
 						array[n][m] = 0;
 					}
 					else{
 						array[n][m] = 1;
 					}
 				}
+			*line = *line + 9;
 			}
 		}
 	}
 
 	fclose(file_pointer);
 	display_memory(array);
+	run();
 }
 
 /*prints the contents of memory to screen*/
@@ -128,9 +143,16 @@ void display_memory(int array[32][8]) {
 		printf("this binary number at row %i is: ", n);
 		for(m = 0; m < 8; m++){
 			 printf("%i ", array[n][m]);
+
 		}
 		printf("\n");
 	}
+}
+
+void run(){
+	ACC = 0;
+	IP = 0;
+	convert_to_assembly(array);
 }
 
 /* Converts the memory contents to assembly language and displays the results on the screen */
@@ -140,43 +162,52 @@ void convert_to_assembly(int array[32][8]){
 	int o[5];
 	for(n = 0; n < 32; n++){
 		printf("the instruction at this row is: ");
-		/*FIX HERE*/
-		instruct = array[n][m] >> 5;
-		printf("%i", instruct);
-
 		/*read the op of this instruction store it*/
 		for(m = 3; m < 8; m++){
 			o[m] = array[n][m];
 		}
 		printf("\n");
 
+		for(m = 0; m < 3; m++){
+			if(m == 0){
+				instruct = array[n][m] * 10;
+			}
+			else{
+				if(array[n][m] == 0){
+					instruct = (((instruct << 1) | array[n][m] )* 10);
+				}
+				else{
+					instruct = ((instruct | array[n][m]) * 10 );
+				}
+			}
+		}
+		printf("int: %i\n", instruct);
 		switch(instruct){
 			case 000: printf("Halt execution of the program.\n");
-								/*halt();*/
-					  		break;
+					  halt();
+					  break;
 			case 001: printf("Load a copy of the value in the referenced memory location. \n");
-								/*load(o);*/
-					  		break;
+					  load(o);
+					  break;
 			case 010: printf("Load the constant value of the operand in the accumulator.\n");
-								/*loadC(o);*/
-					  		break;
+					  loadC(o);
+					  break;
 			case 011: printf("Store a copy of the contents of the accumulator.\n");
-								/*load(o);*/
-					  		break;
+					  load(o);
+					  break;
 			case 100: printf("Add the value in the referenced memory location to the value in the accumulator.\n");
-								add(o);
-					  		break;
+					  add(o);
+					  break;
 			case 101: printf("Subtract the value in the referenced memory location from the value in the accumulator.\n");
-								sub(o);
-					  		break;
+					  sub(o);
+					  break;
 			case 110: printf("Jump to the referenced memory location if the value of the accumulator is a positive number.\n");
-								jump(o);
-					  		break;
+					  jump(o);
+					  break;
 			case 111: printf("Jump to the referenced memory location if the value of the accumulator is 0.\n");
-								jumpZ(o);
-					  		break;
+					  jumpZ(o);
+					  break;
 		}
-
 		instruct = '\0';
 	}
 }
@@ -274,8 +305,16 @@ void add(int operand[5]){
 }
 
 void sub(int operand[5]){
-	ACC = ACC - binary_to_decimal(operand);
+	int current = IP;
+	int constant[5];
+	int m;
+	IP = binary_to_decimal(operand);
+	for(m = 0; m < 8; m ++){
+		constant[m] = array[IP][m];
+	}
+	ACC = ACC - binary_to_decimal(constant);
 	printf("Result: %i \n", ACC);
+	IP = current;
 	IP++;
 }
 

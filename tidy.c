@@ -27,9 +27,9 @@ void jump(int operand[5]);
 void jumpZ(int operand[5]);
 
 int array[32][8];
-int ACC;
-int IP;
-int instruct = 0;
+int ACC = 0;
+int IP = 0;
+char instruct[] = "000";
 
 /*calls appropiate data inout method based on argument form user*/
 int main(int argc, char * argv[]){
@@ -150,9 +150,12 @@ void display_memory(int array[32][8]) {
 }
 
 void run(){
-	ACC = 0;
-	IP = 0;
-	convert_to_assembly(array);
+	if(IP < 32){
+		convert_to_assembly(array);
+	}
+	else{
+		printf("that address does not exit \n");
+	}
 }
 
 /* Converts the memory contents to assembly language and displays the results on the screen */
@@ -160,61 +163,70 @@ void convert_to_assembly(int array[32][8]){
 	int n;
 	int m = 0;
 	int o[5];
-	for(n = 0; n < 32; n++){
-		printf("the instruction at this row is: ");
-		/*read the op of this instruction store it*/
-		for(m = 3; m < 8; m++){
-			o[m] = array[n][m];
-		}
-		printf("\n");
+	char add[] = "0";
 
-		for(m = 0; m < 3; m++){
-			if(m == 0){
-				instruct = array[n][m] * 10;
-			}
-			else{
-				if(array[n][m] == 0){
-					instruct = (((instruct << 1) | array[n][m] )* 10);
-				}
-				else{
-					instruct = ((instruct | array[n][m]) * 10 );
-				}
-			}
+	printf("pointer: %i\n", IP);
+	printf("the instruction at this row is: ");
+	/*read the op of this instruction store it*/
+	for(m = 3; m < 8; m++){
+		o[m] = array[IP][m];
+	}
+
+	for(m = 0; m < 3; m++){
+		if(array[IP][n] == 0){
+			add[0] = '0';
 		}
-		printf("int: %i\n", instruct);
-		switch(instruct){
-			case 000: printf("Halt execution of the program.\n");
-					  halt();
-					  break;
-			case 001: printf("Load a copy of the value in the referenced memory location. \n");
-					  load(o);
-					  break;
-			case 010: printf("Load the constant value of the operand in the accumulator.\n");
-					  loadC(o);
-					  break;
-			case 011: printf("Store a copy of the contents of the accumulator.\n");
-					  load(o);
-					  break;
-			case 100: printf("Add the value in the referenced memory location to the value in the accumulator.\n");
-					  add(o);
-					  break;
-			case 101: printf("Subtract the value in the referenced memory location from the value in the accumulator.\n");
-					  sub(o);
-					  break;
-			case 110: printf("Jump to the referenced memory location if the value of the accumulator is a positive number.\n");
-					  jump(o);
-					  break;
-			case 111: printf("Jump to the referenced memory location if the value of the accumulator is 0.\n");
-					  jumpZ(o);
-					  break;
+		else{
+			add[0] = '1';
 		}
-		instruct = '\0';
+		instruct = strcat(instruct, add);
+	}
+
+	printf("%s \n", instruct);
+
+	if(strcmp(instruct, '000')){
+		printf("Halt execution of the program.\n");
+		halt();
+	}
+	else if(strcmp(instruct, '001')){ 
+		printf("Load a copy of the value in the referenced memory location. \n");
+		load(o);
+	}
+	else if(strcmp(instruct, '010')){
+		printf("Load the constant value of the operand in the accumulator.\n");
+		loadC(o);
+	}
+	else if(strcmp(instruct, '011')){ 
+		printf("Store a copy of the contents of the accumulator.\n");
+	  	load(o);
+	}
+	else if(strcmp(instruct, '100')){
+		printf("Add the value in the referenced memory location to the value in the accumulator.\n");
+		add(o);
+	}
+	else if(strcmp(instruct, '101')){
+		printf("Subtract the value in the referenced memory location from the value in the accumulator.\n");
+		sub(o);
+	}
+	else if(strcmp(instruct, '110')){
+		printf("Jump to the referenced memory location if the value of the accumulator is a positive number.\n");
+		jump(o);
+	}
+	else if(strcmp(instruct, '111')){
+		printf("Jump to the referenced memory location if the value of the accumulator is 0.\n");
+		jumpZ(o);
+	}
+	else{
+		printf("No instruction matched \n");
+	}
+	for(m = 0; m < 3; m++){
+		instruct[m] = "\0";
 	}
 }
+
 /*translate from decimal to binary*/
 void decimal_to_binary(int dec, int bin[]){
 	int i;
-
 	for(i = 7; i >= 0; i--){
 			bin[i] = dec%2;
 			dec = dec/2;
@@ -269,12 +281,14 @@ void load(int operand[5]){
 	printf("Loaded: %i\n", ACC);
 	IP = current;
 	IP++;
+	run();
 }
 
 void loadC(int operand[5]){
 	ACC = binary_to_decimal(operand);
 	printf("Loaded: %i\n", ACC);
 	IP++;
+	run();
 }
 
 void store(int operand[5]){
@@ -288,6 +302,7 @@ void store(int operand[5]){
 	}
 	IP = current;
 	IP++;
+	run();
 }
 
 void add(int operand[5]){
@@ -302,6 +317,7 @@ void add(int operand[5]){
 	printf("Result: %i \n", ACC);
 	IP = current;
 	IP++;
+	run();
 }
 
 void sub(int operand[5]){
@@ -316,16 +332,19 @@ void sub(int operand[5]){
 	printf("Result: %i \n", ACC);
 	IP = current;
 	IP++;
+	run();
 }
 
 void jump(int operand[5]){
 	if(ACC > 0){
 		IP = binary_to_decimal(operand);
 	}
+	run();
 }
 
 void jumpZ(int operand[5]){
 	if(ACC == 0){
 		IP = binary_to_decimal(operand);
 	}
+	run();
 }

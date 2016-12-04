@@ -29,7 +29,7 @@ void jumpZ(int operand[5]);
 int array[32][8];
 int ACC = 0;
 int IP = 0;
-char instruct[] = "000";
+char instruct[4];
 
 /*calls appropiate data inout method based on argument form user*/
 int main(int argc, char * argv[]){
@@ -184,37 +184,45 @@ void convert_to_assembly(int array[32][8]){
 
 	printf("%s \n", instruct);
 
-	if(strcmp(instruct, '000')){
+	if(!strcmp(instruct, '000')){
 		printf("Halt execution of the program.\n");
 		halt();
+		break;
 	}
-	else if(strcmp(instruct, '001')){ 
+	else if(!strcmp(instruct, '001')){ 
 		printf("Load a copy of the value in the referenced memory location. \n");
 		load(o);
+		continue;
 	}
-	else if(strcmp(instruct, '010')){
+	else if(!strcmp(instruct, '010')){
 		printf("Load the constant value of the operand in the accumulator.\n");
 		loadC(o);
+		continue;
 	}
-	else if(strcmp(instruct, '011')){ 
+	else if(!strcmp(instruct, '011')){ 
 		printf("Store a copy of the contents of the accumulator.\n");
 	  	load(o);
+	  	continue;
 	}
-	else if(strcmp(instruct, '100')){
+	else if(!strcmp(instruct, '100')){
 		printf("Add the value in the referenced memory location to the value in the accumulator.\n");
 		add(o);
+		continue;
 	}
-	else if(strcmp(instruct, '101')){
+	else if(!strcmp(instruct, '101')){
 		printf("Subtract the value in the referenced memory location from the value in the accumulator.\n");
 		sub(o);
+		continue;
 	}
-	else if(strcmp(instruct, '110')){
+	else if(!strcmp(instruct, '110')){
 		printf("Jump to the referenced memory location if the value of the accumulator is a positive number.\n");
 		jump(o);
+		continue;
 	}
-	else if(strcmp(instruct, '111')){
+	else if(!strcmp(instruct, '111')){
 		printf("Jump to the referenced memory location if the value of the accumulator is 0.\n");
 		jumpZ(o);
+		continue;
 	}
 	else{
 		printf("No instruction matched \n");
